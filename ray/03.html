@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.button {
+        display: inline-block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #212421;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999; }
+      
+    .button:hover {background-color:#212421}
+      
+    .button:active {
+        background-color: #212421;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
+      * {box-sizing: border-box}
+
+.container {
+  width: 100%;
+  background-color: #ddd;
+}
+
+.skills {
+  text-align: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+}
+
+.html {width: 80%; background-color: #a8ff07;}
+.css {width: 70%; background-color: #a8ff07;}
+.js {width: 65%; background-color: #a8ff07;}
+.php {width: 90%; background-color: #a8ff07;;}
+  
+body {
+  margin: 0;
+  font-size: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.heading {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  background-color: #f1f1f1;
+}
+
+.heading h2 {
+  text-align: center;
+}
+
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #ccc;
+}
+
+.progress-bar {
+  height: 8px;
+  background: #333;
+  width: 0%;
+}
+
+.content {
+  padding: 100px 0;
+  margin: 50px auto 0 auto;
+  width: 80%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #323742;
+  font-family: Helvetica, sans-serif;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+
+
+
+/* The actual content */
+.content {
+  padding: 10px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="heading">
+  <h2>My Skill</h2>
+  <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>  
+</div>
+
+<div class="content">
+  <h3>Scroll Down to See The Effect</h3>
+  <p>Hello, welcome to log in to my program interface, we will analyze the personality ability,Let you know more about  <b>my personal professional functions </b>.</p>
+  <p>您好，歡迎您登入我的程式介面，我們將透過人格能力分析，讓您更了解<b>我的個人專業職能</b>。</p>
+
+  <button  class ="button"onclick="typeWriter()">Click me</button>
+  <p id="demo"></p>
+  <script>
+  var i = 0;
+  var txt = '您好，我是本程式的開發引導員，以下將為您介紹本產品所具備的各項能力，像是HTML、CSS、JavaScript、ADOBE等程式，本系統皆可支援與進行開發與維護，本產品將持續更新與提升使用者的使用效能若有任何回饋還應聯繫我們';
+  var speed = 50;
+  function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed); }}</script>
+</div>
+<div class="timeline"></div>
+  <div class="content">
+    <h1>My Skills</h1>
+    <h3>已具備的能力</h3>
+    <p>本身就讀中原資管系，在學校所學以及自學能力包含以下 <b>透過圖表的方式呈現</b>讓您能更快速了解我的特質與專業職能。</p>
+    <p>ADOBE本身自學兩年，對於基本Photoshop Illustrator都有一定的掌握能力、JavaScript本身是高中開始接觸，但對於程式語言的熟習度可以再加強，而HTML、CSS是到大二上學期多媒體課程時才開使有所接觸，透過不停摸索提升自己的能力。</p>  
+    
+    
+
+    <p>HTML</p>
+    <div class="container">
+      <div class="skills html">80%</div>
+    </div>
+    <p>CSS</p>
+    <div class="container">
+      <div class="skills css">70%</div>
+    </div>
+    <p>JavaScript</p>
+    <div class="container">
+      <div class="skills js">65%</div>
+    </div>
+    <p>ADOBE</p>
+    <div class="container">
+      <div class="skills php">90%</div>
+    </div>
+  </div>
+
+  
+
+<script>
+// When the user scrolls the page, execute myFunction 
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.getElementById("myBar").style.width = scrolled + "%";
+}
+</script>
+
+</body>
+</html> 
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+#snackbar {
+  visibility: hidden;
+  min-width: 250px;
+  margin-left: -125px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  padding: 16px;
+  position: fixed;
+  z-index: 1;
+  left: 50%;
+  bottom: 30px;
+  font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+
+</style>
+</head>
+</html>
+

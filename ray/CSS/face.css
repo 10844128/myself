@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.face {
+    display: flex;
+   /* flex-wrap: wrap;*/
+}
+
+.side {
+    flex: 30%;
+    background-color: yellow;
+    padding: 20px;
+}
+      
+.main {
+    flex: 70%;
+    background-color: blue;
+    padding: 20px;
+}
+
