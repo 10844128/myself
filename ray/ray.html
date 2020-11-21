@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+ *{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    letter-spacing: 5px;
+}
+
+.hero {
+  background-image: url(IMG/p2.png);/*no-repeat center;*/
+  background-size: cover;
+  height: 500px;
+  position: relative;
+}
+
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color:white;
+}
+.button {
+      display: inline-block;
+      padding: 15px 25px;
+      font-size: 24px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #212421;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 9px #999;
+
+    }
+    
+.button:hover {background-color:#212421}
+    
+.button:active {
+      background-color: #212421;
+      box-shadow: 0 5px #666;
+      transform: translateY(4px);
+    }
+
+.pagination {
+  display: inline-block;
+  
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color:  #212421;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #f1f1f1;
+}
+
+/* Header/Blog Title */
+.header {
+  text-align: center;
+  background: white;
+}
+
+.header h1 {
+  font-size: 50px;
+}
+
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 10px 12px;
+  text-decoration: none;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {   
+  float: left;
+  width: 75%;
+}
+
+/* Right column */
+.rightcolumn {
+  float: left;
+  width: 25%;
+  background-color: #f1f1f1;
+  padding-left: 20px;
+}
+
+/* Fake image */
+.fakeimg {
+  background-color: #222222;
+  width: 100%;
+  padding: 20px;
+  color: #a8ff07;
+  text-align: center;
+  font-size: larger;
+}
+
+/* Add a card effect for articles */
+.card {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Footer */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+  margin-top: 20px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+  .leftcolumn, .rightcolumn {   
+    width: 100%;
+    padding: 0;
+  }
+}
+
+/* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
+@media screen and (max-width: 400px) {
+  .topnav a {
+    float: none;
+    width: 100%;
+  }
+}
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+#snackbar {
+    visibility: hidden; 
+    min-width: 450px;
+    min-height: 200px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 25px;
+    position: fixed;
+    z-index: 1;
+    right: 120%;
+    bottom: 20px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;} 
+  to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;} 
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+.container {
+  position: relative;
+  width: 50%;
+  background-color: #aaa;
+  width: 100%;
+  padding: 20px;
+  
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #212421;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.fadein {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+.fadeintop {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 100%;
+  left: 100%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+
+</style>
+</head>
+<body>
+<div root>
+
+    <div class="header">
+        <div class="hero">
+        <div class="hero-text">
+          <h1 style="font-size:50px">I am HSIEH RAY</h1>
+          <h2 style="padding: 2ex;">Autobiography</h2>         
+            <button  class="button" onclick="myFunction()">Learn More</button>
+            <div id="snackbar">
+                <h1 style="font-size:50px">中原大學資管系 </h1>
+                <h3 style="padding: 2ex;">個人履歷</h3> Life is short. Don’t miss opportunities to spend time with the people that you love.
+                </div>
+            <script>
+            function myFunction() {
+            var x = document.getElementById("snackbar");
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+            }
+            </script>
+        </div>
+      </div>
+    </div>
+
+<div class="topnav">
+  <a href="https://www.instagram.com/ray_hsieh_/" target="blank"><img style="width: 50px;" src="IMG/h1.gif" alt="ig"></a>
+  <a href="https://www.facebook.com/ray.heish/" target="blank"><img style="width: 50px;" src="IMG/h2.gif" alt="facebook"></a>
+  <a onclick="self.location.href='mailto:ray22154648@outlook.com'"><img style="width: 50px;" src="IMG/h3.gif" alt="email"></a>
+  <a href="https://github.com/10844128?tab=repositories" target="blank"style="float:right"><img style="width: 50px;" src="IMG/h4.gif" alt="github""></a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2> INTRODUCTION MYSELY</h2>
+      <h5>Something about me , Sep. 9, 2000</h5>
+      <div class="container">
+        <img style="width: 100%;" src="IMG/p8.png" alt="Avatar" class="image">
+        <div class="overlay">
+          <div class="fadein"> <img style="width: 100%;" src="IMG/p1.png" alt="Avatar" class="image">
+            <BR> Name: HSIEH YEN RAY<BR>
+        Birthaday :Sep. 15, 2000<BR>
+        Studay :Chung Yuan Christian University<BR>
+        Hobbies:Photography
+
+        </div>
+        </div>
+      </div>
+
+      <p> 「僅靠參數，無法作出一款爆款的產品。」    </p>
+      <p>在校成績是我，畢業成績也是我──參數的我
+        而真正決定我的價值的，包括成長時的家庭、人際關係、各種養成、各種活動，都形塑今日的我，以及我的價值觀
+        我的價值觀成就無可取代的我，今日我將自信的自我表述、自我推薦，希望能成為一名優秀的學習者、經營者與開創者。
+        </p>
+    </div>
+    <div class="card">
+      <h2>FRIEND AND TEACHER</h2>
+      <h5>Life is important to others friend and teacher</h5>
+      <div class="fakeimg" style="height:200px;" ><h3>生命中的重要他人</h3>人的一生註定會有幾位走入你的生命，成為影響你一輩子，或往後人生軌道的重要他人，他或許會是摯友，或許會是你的人生導師，或許他兩者皆是，同時扮演著。這幾位朋友就是我人格特質的設計師與工程師。
+      </div>
+      
+      <button class="accordion">用六年的時光學會愛人    </button>
+      <div class="panel">
+        <p>或許你的一個無意的舉動改變了別人的一生，我想在我國小階段遇上的一名老師便是這樣的一個存在，她並不在意我是個任性甚至無賴的孩子，她教會我做人的道理，她是我第二個母親。</p>
+      </div>
+      
+      <button class="accordion">環境對一個人的影響    </button>
+      <div class="panel">
+        <p>如果說國小我懂得了規矩，那國中的我找到了自信與熱情我和他的教學理念一拍即合，他說他要是伯樂，我便是他找尋的千里馬，他給了我舞台展現我自己。</p>
+      </div>
+      
+      <button class="accordion">深摯的友誼是人生最大的一種安慰    </button>
+      <div class="panel">
+        <p>每個人生命都會有低潮的時刻，若有名摯友能和你一同陪伴你那是何其幸運，你們無話不談，分享著生活的喜怒哀樂，或許每個人都是個孤島，但我們卻能與對方心有靈犀。
+        </p>
+      </div>
+      <button class="accordion">建構人生的「格局」 </button>
+      <div class="panel">
+        <p>當你站在人生的十字路口感到困惑或迷茫之時，有人能提供你意見與你討論，我們就像心靈捕手的尚恩與威爾，亦師亦友的一名導師，我們的關係從過去的師生至今日的朋友。</p>
+      </div>
+      <p>我的特質、形象、能力</p>
+      <p> 投入最大的熱情、性格追求完美、個性大方有義氣、 反應快，熱情外向。<br>
+        很有想法，可接納不同聲音、心性不夠定、堅持是最難的，實踐才是最真的。</p>
+      <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+      
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.maxHeight) {
+            panel.style.maxHeight = null;
+          } else {
+            panel.style.maxHeight = panel.scrollHeight + "px";
+          } 
+        });
+      }
+      </script>
+    </div>
+    <div class="card">
+        <h2> Personality Traits</h2>
+        <h5>My characteristics, image, ability</h5>
+
+        <div class="container">
+            <img style="width: 100%;" src="IMG/p10.png" alt="Avatar" class="image">
+            <div class="overlay">
+              <div class="fadein"> <img style="width: 100%;" src="IMG/p9.png" alt="Avatar" class="image">
+               
+    
+            </div>
+            </div>
+          </div>
+        <div class="fakeimg" style="height:200px;" ><h3> 屬於我的一句的介紹詞</h3>花半秒鐘就看透事物本質的人，和花一輩子都看不清事物本質的人，註定是截然不同的命運，因為價值觀決定命運。
+            </div>   
+      </div>
+      
+  </div>
+  <div class="rightcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <div class="fakeimg" style="height:100px;"> 「成熟與成就常相關，想法與作法常密切。」</div>
+      <p>一個人的生活習慣會影響他的做事態度和價值觀。以下將分享我的日常生活習慣與興趣或嗜好。    </p>
+    </div>
+    <div class="card">
+      <h2>工作經驗素養<br></h2>
+      <div class="fakeimg"><p>補教業    </p></div>
+      <div class="container">
+        <img style="width: 100%;" src="IMG/p3.jpg" alt="Avatar" class="image">
+        <div class="overlay">
+          <div class="fadein">學以致用，持續學習，將資管所學運用於管理班級事務，文書處裡和替學生們解答。 </div>
+        </div>
+      </div>
+      <div class="fakeimg"><p>帶營隊 </p></div>
+      <div class="container">
+        <img style="width: 100%;" src="IMG/p4.jpg" alt="Avatar" class="image">
+        <div class="overlay">
+          <div class="fadein">認為教育對一個人非常重要，加上富有愛心喜歡與孩子相處，便參加各種營隊，賽E趴、卡米蒂、人本教育等等   </div>
+        </div>
+      </div>
+      <div class="fakeimg"><p>餐飲業    </p></div>
+      <div class="container">
+        <img style="width: 100%;" src="IMG/p6.jpg" alt="Avatar" class="image">
+        <div class="overlay">
+          <div class="fadein">在餐飲業上過班能更瞭解當今市場的運行模式，與懂得服務業和與消費者之間的應對進退。</div>
+        </div>
+      </div>
+      <div class="fakeimg"><p>洗水塔 </p></div>
+      <div class="container">
+        <img style="width: 100%;" src="IMG/p5.jpg" alt="Avatar" class="image">
+        <div class="overlay">
+          <div class="fadein">做過勞力活，也培養出肯吃苦耐勞的特性，不怕艱辛的性格，懂得賺錢並不容易，使我金錢觀有所改變。</div>
+        </div>
+      </div>
+      
+      
+
+    </div>
+    <div class="card">
+      <h3>Family </h3>
+      <p>About Me</p>
+      <div class="timeline">
+        <div class="container right">
+          <div class="content">
+            <h2>Member</h2>
+            <p> 父親(牧羊人)<br>
+                電梯技師，玩具醫生<br>
+                母親(保母)<br>
+                公職員工，廚藝達人<br>
+                姐姐 (朋友)<br>
+                大兩歲，藝術顧問
+                </p>
+            <h2>Values</h2>
+            <p> 生活氣氛: <br>
+                開放式的溝通，幽默是一定要的，扮演好自己的角色<br>
+                教養原則:<br>
+                穩中求進，做事都要積極，為人正直 <br>
+                經濟生活:<br>
+                理財觀：有預算則不窮   金錢觀：用對錢勝於有錢
+                </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="footer">
+    <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#"class="active">1</a>
+        <a href="02.html"target="blank" >2</a>
+        <a href="03.html"target="blank">3</a>
+        <a href="https://10844128.github.io/face.html"target="blank">4</a>
+        <a href="#">至頂</a>
+        <a href="#">&raquo;</a>
+      </div>
+  <h2>Copyright ©-2020 Ray.Hsieh </h2>
+  
+</div>
+</div>
+</body>
+</html>
+
+
+
+
